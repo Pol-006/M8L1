@@ -38,3 +38,24 @@ Las variables de Jinja ({{ title }}, {{ header }}, {{ message }}) permiten que F
     </div>
 </body>
 </html>
+
+Servidor Flask:
+
+Define una ruta / que renderiza la plantilla template.html y pasa datos dinámicos como el título, el encabezado y el mensaje.
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template(
+        "template.html",
+        title="Mi Página",
+        header="¡Hola, Mundo!",
+        message="Este es un mensaje dinámico con Flask y Jinja."
+    )
+
+if __name__ == "__main__":
+    app.run(debug=True)
